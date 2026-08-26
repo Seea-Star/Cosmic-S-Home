@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COSMIC-S</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #f5f5f7;
+      background-image: 
+        linear-gradient(#e1e1e6 1px, transparent 1px),
+        linear-gradient(90deg, #e1e1e6 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: #111111;
+      font-family: 'Quicksand', sans-serif;
+      padding: 30px 10px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .site-wrapper {
+      max-width: 980px;
+      width: 100%;
+      background: #ffffff;
+      border: 3px solid #111111;
+      border-radius: 32px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 6px 6px 0px #111111;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .top-banner {
+      background: #111111;
+      border: 2px solid #111111;
+      border-radius: 20px;
+      padding: 12px 25px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+    }
+
+    .top-banner h1 { 
+      font-size: 3.5rem; 
+      font-weight: 800; 
+      letter-spacing: 3px; 
+      color: #ffffff;
+      text-align: left;
+      line-height: 1;
+      text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: minmax(180px, 240px) minmax(220px, 1fr) minmax(160px, 220px);
+      gap: 12px;
+      align-items: stretch;
+      padding-bottom: 20px;
+      width: 100%;
+    }
+
+    .col-left, .col-center, .col-right {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-width: 0;
+    }
+
+    /* Stile per il pezzo di carta allineato alla colonna e largo quanto l'orologio */
+    .paper-note-container {
+      width: 100%;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .paper-note-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.15));
+    }
+
+    .box {
+      background: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0px #111111;
+      margin-bottom: 14px;
+    }
+    .box-header {
+      background: #f0f0f3;
+      border-bottom: 2px solid #111111;
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .box-body { padding: 14px; }
+
+    .box-dark {
+      background: #111111;
+      color: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0px #111111;
+      margin-bottom: 14px;
+    }
+    .box-dark .box-header {
+      background: #222222;
+      color: #ffffff;
+      border-bottom: 2px solid #444444;
+    }
+
+    .receipt-box {
+      background: #ffffff;
+      border: 2px solid #111111;
+      padding: 18px 14px;
+      box-shadow: 4px 4px 0px #111111;
+      margin-bottom: 14px;
+      transform: rotate(-2deg);
+      transition: transform 0.2s ease;
+    }
+    .receipt-box:hover { transform: rotate(0deg) scale(1.01); }
+    .receipt-title { text-align: center; font-weight: 800; font-size: 0.85rem; }
+    .receipt-dash { border: none; border-top: 2px dashed #111; margin: 10px 0; }
+
+    .receipt-menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .receipt-menu-list a {
+      color: #111;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.78rem;
+      display: block;
+      padding: 8px 10px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .receipt-menu-list a.active, .receipt-menu-list a:hover {
+      background: #111111;
+      color: #ffffff;
+    }
+
+    .receipt-barcode {
+      text-align: center;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin-top: 8px;
+    }
+
+    .calendar-graphic-dark { 
+      width: 36px; height: 36px; border: 2px solid #fff; border-radius: 6px; background: #222; margin: 0 auto 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 2px 2px 0px #fff;
+    }
+    .calendar-graphic-top-dark { background: #fff; height: 10px; width: 100%; }
+    .calendar-graphic-body-dark { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: #fff; }
+
+    .mini-calendar-dark { width: 100%; font-size: 0.68rem; text-align: center; border-collapse: collapse; }
+    .mini-calendar-dark th, .mini-calendar-dark td { padding: 4px 2px; border: none; color: #ffffff; }
+    .mini-calendar-dark th { background: #333333; color: #ffffff; font-size: 0.6rem; font-weight: 800; border-radius: 4px; }
+    .mini-calendar-dark td.today-dark { background: #ffffff; color: #111111; font-weight: 800; border-radius: 4px; }
+
+    .pixel-clock-box-dark {
+      background: #111;
+      border: 2px solid #111;
+      border-radius: 16px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 3px 3px 0px #111;
+      margin-bottom: 14px;
+    }
+    .pixel-clock-time-dark {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.85rem;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .ipod-player-box {
+      background: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0px #111111;
+      margin-bottom: 0;
+    }
+    .ipod-player-inner {
+      text-align: center;
+      padding: 12px 10px;
+    }
+    .ipod-screen-clean { 
+      background: #222; 
+      color: #fff; 
+      border: 2px solid #444; 
+      border-radius: 12px; 
+      padding: 12px 10px; 
+      font-size: 0.78rem; 
+      font-weight: 700; 
+      margin-bottom: 12px; 
+      min-height: 55px; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .ipod-controls-clean { 
+      display: flex; 
+      justify-content: center; 
+      gap: 12px; 
+      align-items: center; 
+    }
+    .ipod-btn-ctrl-clean { 
+      background: #222; 
+      color: #fff;
+      border: 2px solid #555; 
+      border-radius: 50%; 
+      width: 36px; 
+      height: 36px; 
+      font-size: 0.8rem; 
+      font-weight: 800; 
+      cursor: pointer; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      box-shadow: 2px 2px 0px #444; 
+      transition: transform 0.1s ease;
+    }
+    .ipod-btn-ctrl-clean:active { 
+      transform: translate(1px, 1px); 
+      box-shadow: 1px 1px 0px #444; 
+    }
+
+    .nav-box-btn {
+      width: 100%;
+      background: #ffffff;
+      border: 2px solid #111;
+      border-radius: 16px;
+      padding: 10px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #111;
+      text-align: center;
+      margin-bottom: 14px;
+      transition: transform 0.1s ease;
+      text-decoration: none;
+      color: #111;
+      display: block;
+    }
+    .nav-box-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #111; }
+    .nav-box-btn:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #222; }
+
+    .nav-box-btn-dark {
+      width: 100%;
+      background: #111111;
+      color: #ffffff;
+      border: 2px solid #111;
+      border-radius: 16px;
+      padding: 10px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #111;
+      text-align: center;
+      margin-bottom: 14px;
+      transition: transform 0.1s ease;
+      text-decoration: none;
+      display: block;
+    }
+    .nav-box-btn-dark:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #333; }
+    .nav-box-btn-dark:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #111; }
+
+    .site-footer { border-top: 2px solid #111; padding-top: 12px; text-align: center; font-weight: 700; font-size: 0.72rem; color: #555; }
+
+    .fullscreen-page { display: none; max-width: 960px; width: 100%; flex-direction: column; gap: 16px; }
+    .fullscreen-page.active { display: flex; }
+
+    .fullscreen-header {
+      background: #ffffff;
+      border: 3px solid #111;
+      border-radius: 20px;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 4px 4px 0px #111;
+    }
+
+    .fullscreen-header h2 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.3px; }
+
+    .back-btn {
+      background: #111111;
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px #555;
+    }
+    .back-btn:hover { background: #333; }
+
+    .cards-grid-scroll {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 10px;
+      justify-items: center;
+    }
+
+    .buttons-wall-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      padding: 20px;
+      background: #fff;
+      border: 3px solid #111;
+      border-radius: 20px;
+      box-shadow: 4px 4px 0px #111;
+    }
+    .buttons-wall-grid img { width: 88px; height: 31px; border: 1px solid #111; image-rendering: pixelated; }
+
+    .pure-card-img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      filter: drop-shadow(4px 4px 0px #111);
+      transition: transform 0.15s ease;
+    }
+    .pure-card-img:hover { transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <div id="home-view" class="site-wrapper">
+
+    <header class="top-banner">
+      <h1>COSMIC-S</h1>
+    </header>
+
+    <div class="grid-container">
+
+      <!-- LEFT COLUMN -->
+      <aside class="col-left">
+        <div class="receipt-box">
+          <div class="receipt-title">.☘︎ ݁˖ MENU ☰ ❞</div>
+          <hr class="receipt-dash">
+          <ul class="receipt-menu-list">
+            <li><a class="active">˙ᵕ˙ HOME</a></li>
+            <li><a onclick="openPage('blog-page')">LOGS &amp; BLOG ✐ᝰ</a></li>
+            <li><a onclick="openPage('gallery-page')">GALLERY ⋆˚꩜｡</a></li>
+            <li><a href="#" target="_blank">⎚-⎚ STORIES</a></li>
+            <li><a href="#" target="_blank">[+..••] MINI-GAMES</a></li>
+            <li><a onclick="openPage('watchlist-page')">WATCHLIST ⭑.ᐟ</a></li>
+          </ul>
+          <hr class="receipt-dash">
+          <div class="receipt-barcode">𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃</div>
+        </div>
+
+        <div class="box-dark">
+          <div class="box-header"><span id="cal-month-title">calendar</span><div style="width:12px; height:12px; border:2px solid #fff; border-radius:2px;"></div></div>
+          <div class="box-body">
+            <div class="calendar-graphic-dark">
+              <div class="calendar-graphic-top-dark"></div>
+              <div class="calendar-graphic-body-dark" id="cal-day-number">--</div>
+            </div>
+            <table class="mini-calendar-dark">
+              <thead>
+                <tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>
+              </thead>
+              <tbody id="calendar-body">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="box-header"><span>link_me</span><span>★</span></div>
+          <div class="box-body" style="text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center;">
+            <div>
+              <img src="./button.gif" alt="My Button" style="width: 88px; height: 31px; display: block; image-rendering: pixelated;" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';">
+            </div>
+            <div style="border: 2px dashed #111; padding: 8px; border-radius: 10px; font-size: 0.65rem; font-family: monospace; width: 100%; background: #fdfdfd; word-break: break-all; text-align: left;">
+              &lt;a href="https://your-site.neocities.org" target="_blank"&gt;&lt;img src="./button.gif" alt="Cosmic-S"&gt;&lt;/a&gt;
+            </div>
+          </div>
+        </div>
+
+        <button class="nav-box-btn-dark" onclick="openPage('buttons-page')" style="margin-bottom:0;">
+          ★ WEBRINGS -&gt;
+        </button>
+      </aside>
+
+      <!-- CENTER COLUMN -->
+      <main class="col-center">
+        <div style="margin-bottom: 14px;">
+          <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
+        </div>
+
+        <a href="#" target="_blank" class="nav-box-btn-dark" style="background: #222; margin-bottom: 14px; padding: 14px;">
+          ☕︎ STUDY DIARY &amp; NOTES -&gt;
+        </a>
+
+        <div class="box-dark" style="margin-bottom: 14px;">
+          <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
+          <div class="box-body">
+            <p style="font-size:0.85rem; line-height:1.6; font-weight:600; color:#ddd;">
+              Welcome to my cozy corner on the web! Feel free to look around and sign the guestbook before you leave.
+            </p>
+          </div>
+        </div>
+
+        <div class="box" style="margin-bottom: 14px;">
+          <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
+          <div class="box-body">
+            <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
+              <li><strong>[AUG 24]</strong> Layout polished and translated to English! ✨</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-bottom: 0;">
+          <a href="#" target="_blank" class="nav-box-btn-dark" style="margin-bottom:0;">
+            PROJECT ONE -&gt;
+          </a>
+          <a href="#" target="_blank" class="nav-box-btn" style="margin-bottom:0;">
+            PROJECT TWO -&gt;
+          </a>
+        </div>
+      </main>
+
+      <!-- RIGHT COLUMN -->
+      <aside class="col-right">
+        <!-- Pezzo di carta posizionato tra il banner nero e l'orologio, largo quanto l'orologio -->
+        <div class="paper-note-container">
+          <img src="./1787672037979.png" alt="Note Paper" class="paper-note-img">
+        </div>
+
+        <div class="pixel-clock-box-dark">
+          <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
+        </div>
+
+        <!-- COLLEGAMENTO AL VERO GUESTBOOK DI ATABOOK -->
+        <a href="https://gura-code.atabook.org" target="_blank" class="nav-box-btn" style="display: block; text-decoration: none;">
+          ✎ SIGN GUESTBOOK -&gt;
+        </a>
+
+        <div class="box-dark">
+          <div class="box-header"><span>live_chat</span><span>(๑>◡<๑)</span></div>
+          <div class="box-body" style="padding: 10px; background: #111111;">
+            <iframe src="https://www5.cbox.ws/box/?boxid=965960&boxtag=EoeC0G" width="100%" height="260" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+          </div>
+        </div>
+
+        <div class="ipod-player-box">
+          <div class="ipod-player-inner">
+            <div class="ipod-screen-clean" id="ipod-screen-text">YouTube Music<br><strong>Playlist Ready</strong></div>
+            <div style="display:none;">
+              <div id="youtube-player"></div>
+            </div>
+            <div class="ipod-controls-clean">
+              <button class="ipod-btn-ctrl-clean" onclick="prevSong()">&#10094;&#10094;</button>
+              <button class="ipod-btn-ctrl-clean" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
+              <button class="ipod-btn-ctrl-clean" onclick="nextSong()">&#10095;&#10095;</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <footer class="site-footer">
+      COSMIC-S // HOSTED ON NEOCITIES // ALL RIGHTS RESERVED
+    </footer>
+
+  </div>
+
+  <!-- FULLSCREEN PAGES -->
+  <div id="blog-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
+      <h2>BLOG</h2>
+    </div>
+    <div class="cards-grid-scroll">
+      <img src="./blog-banner1.png" alt="Blog Photo 1" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+      <img src="./blog-banner2.png" alt="Blog Photo 2" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+    </div>
+  </div>
+
+  <div id="gallery-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
+      <h2>GALLERY</h2>
+    </div>
+    <div class="cards-grid-scroll">
+      <img src="./art-card1.png" alt="Art 1" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+      <img src="./art-card2.png" alt="Art 2" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+    </div>
+  </div>
+
+  <div id="buttons-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
+      <h2>WEBRINGS</h2>
+    </div>
+    <div class="buttons-wall-grid">
+      <a href="#" target="_blank"><img src="./button1.png" alt="Webring Button" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';"></a>
+    </div>
+  </div>
+
+  <div id="watchlist-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
+      <h2>WATCHLIST</h2>
+    </div>
+    <div class="cards-grid-scroll">
+      <img src="./anime-pocket1.png" alt="Anime Card 1" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
+    </div>
+  </div>
+
+  <script>
+    function openPage(pageId) {
+      document.getElementById('home-view').style.display = 'none';
+      document.querySelectorAll('.fullscreen-page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById(pageId);
+      if(target) target.classList.add('active');
+    }
+
+    function closePage() {
+      document.querySelectorAll('.fullscreen-page').forEach(p => p.classList.remove('active'));
+      document.getElementById('home-view').style.display = 'flex';
+    }
+
+    let player;
+    let isPlaying = false;
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const screenText = document.getElementById('ipod-screen-text');
+
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-player', {
+        height: '200',
+        width: '200',
+        playerVars: {
+          'listType': 'playlist',
+          'list': 'PL1HQaIrpViLRdgseBr3FNU1XRrydb1Cem',
+          'index': 0
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      screenText.innerHTML = `YouTube Music<br><strong>Ready to Play</strong>`;
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING) {
+        isPlaying = true;
+        playPauseBtn.innerHTML = "&#10074;&#10074;";
+        try {
+          const videoData = player.getVideoData();
+          if (videoData && videoData.title) {
+            screenText.innerHTML = `Now Playing:<br><strong>${videoData.title}</strong>`;
+          }
+        } catch(e) {}
+      } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+        isPlaying = false;
+        playPauseBtn.innerHTML = "&#9654;";
+      }
+    }
+
+    function togglePlay() {
+      if (!player) return;
+      if (isPlaying) {
+        player.pauseVideo();
+      } else {
+        player.playVideo();
+      }
+    }
+
+    function nextSong() {
+      if (!player) return;
+      player.nextVideo();
+    }
+
+    function prevSong() {
+      if (!player) return;
+      player.previousVideo();
+    }
+
+    function generateCalendar() {
+      const today = new Date();
+      const currentDay = today.getDate();
+      const currentMonth = today.getMonth();
+      const currentYear = today.getFullYear();
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      document.getElementById('cal-month-title').innerText = monthNames[currentMonth].toLowerCase();
+      document.getElementById('cal-day-number').innerText = currentDay;
+
+      const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+      const tbody = document.getElementById('calendar-body');
+      tbody.innerHTML = '';
+
+      let date = 1;
+      for (let i = 0; i < 6; i++) {
+        let row = document.createElement('tr');
+        let hasDate = false;
+
+        for (let j = 0; j < 7; j++) {
+          let cell = document.createElement('td');
+          if (i === 0 && j < firstDayOfMonth) {
+            cell.innerText = '';
+          } else if (date > daysInMonth) {
+            cell.innerText = '';
+          } else {
+            cell.innerText = date;
+            if (date === currentDay) {
+              cell.classList.add('today-dark');
+            }
+            date++;
+            hasDate = true;
+          }
+          row.appendChild(cell);
+        }
+        if (hasDate || i === 0) { tbody.appendChild(row); }
+      }
+    }
+
+    function updatePixelClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('pixel-clock').innerText = `${hours}:${minutes}:${seconds}`;
+    }
+
+    generateCalendar();
+    setInterval(updatePixelClock, 1000);
+    updatePixelClock();
+  </script>
+
+</body>
+  </html>
