@@ -112,6 +112,17 @@
       justify-content: space-between;
       align-items: center;
     }
+    .box-header-accent {
+      background: #F3EEDA;
+      border-bottom: 2px solid #111111;
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #111111;
+    }
     .box-body { padding: 14px; }
 
     .box-dark {
@@ -173,9 +184,9 @@
     }
 
     .calendar-graphic-dark { 
-      width: 36px; height: 36px; border: 2px solid #fff; border-radius: 6px; background: #222; margin: 0 auto 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 2px 2px 0px #fff;
+      width: 36px; height: 36px; border: 2px solid #F3EEDA; border-radius: 6px; background: #222; margin: 0 auto 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 2px 2px 0px #F3EEDA;
     }
-    .calendar-graphic-top-dark { background: #fff; height: 10px; width: 100%; }
+    .calendar-graphic-top-dark { background: #F3EEDA; height: 10px; width: 100%; }
     .calendar-graphic-body-dark { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: #fff; }
 
     .mini-calendar-dark { width: 100%; font-size: 0.68rem; text-align: center; border-collapse: collapse; }
@@ -187,7 +198,7 @@
       font-weight: 800; 
       border-radius: 4px; 
     }
-    .mini-calendar-dark td.today-dark { background: #ffffff; color: #111111; font-weight: 800; border-radius: 4px; }
+    .mini-calendar-dark td.today-dark { background: #F3EEDA; color: #111111; font-weight: 800; border-radius: 4px; }
 
     .pixel-clock-box-dark {
       background: #111;
@@ -201,7 +212,7 @@
     .pixel-clock-time-dark {
       font-family: 'Press Start 2P', monospace;
       font-size: 0.85rem;
-      color: #fff;
+      color: #F3EEDA;
       letter-spacing: 1px;
     }
 
@@ -338,7 +349,7 @@
         </div>
 
         <div class="box-dark">
-          <div class="box-header"><span id="cal-month-title">calendar</span><div style="width:12px; height:12px; border:2px solid #fff; border-radius:2px;"></div></div>
+          <div class="box-header"><span id="cal-month-title">calendar</span><div style="width:12px; height:12px; border:2px solid #F3EEDA; border-radius:2px; background: #F3EEDA;"></div></div>
           <div class="box-body">
             <div class="calendar-graphic-dark">
               <div class="calendar-graphic-top-dark"></div>
@@ -355,7 +366,7 @@
         </div>
 
         <div class="box">
-          <div class="box-header"><span>link_me</span><span>★</span></div>
+          <div class="box-header-accent"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center;">
             <div>
               <a href="https://cosmic-seea.neocities.org/" target="_blank">
@@ -546,12 +557,13 @@
               cell.classList.add('today-dark');
             }
             date++;
-            hasDate > 0 || hasDate = true; // conservato integro
             hasDate = true;
           }
           row.appendChild(cell);
         }
-        if (hasDate || i === 0) { tbody.appendChild(row); }
+        if (hasDate) {
+          tbody.appendChild(row);
+        }
       }
     }
 
