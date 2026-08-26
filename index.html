@@ -80,7 +80,6 @@
       min-width: 0;
     }
 
-    /* Stile per il pezzo di carta allineato alla colonna e largo quanto l'orologio */
     .paper-note-container {
       width: 100%;
       margin-bottom: 14px;
@@ -296,58 +295,6 @@
 
     .site-footer { border-top: 2px solid #111; padding-top: 12px; text-align: center; font-weight: 700; font-size: 0.72rem; color: #555; }
 
-    .fullscreen-page { display: none; max-width: 960px; width: 100%; flex-direction: column; gap: 16px; }
-    .fullscreen-page.active { display: flex; }
-
-    .fullscreen-header {
-      background: #ffffff;
-      border: 3px solid #111;
-      border-radius: 20px;
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 4px 4px 0px #111;
-    }
-
-    .fullscreen-header h2 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.3px; }
-
-    .back-btn {
-      background: #111111;
-      color: #ffffff;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.8rem;
-      cursor: pointer;
-      box-shadow: 2px 2px 0px #555;
-    }
-    .back-btn:hover { background: #333; }
-
-    .cards-grid-scroll {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 10px;
-      justify-items: center;
-    }
-
-    .buttons-wall-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      padding: 20px;
-      background: #fff;
-      border: 3px solid #111;
-      border-radius: 20px;
-      box-shadow: 4px 4px 0px #111;
-    }
-    .buttons-wall-grid img { width: 88px; height: 31px; border: 1px solid #111; image-rendering: pixelated; }
-
     .pure-card-img {
       max-width: 100%;
       width: auto;
@@ -376,11 +323,11 @@
           <hr class="receipt-dash">
           <ul class="receipt-menu-list">
             <li><a class="active">˙ᵕ˙ HOME</a></li>
-            <li><a onclick="openPage('blog-page')">LOGS &amp; BLOG ✐ᝰ</a></li>
-            <li><a onclick="openPage('gallery-page')">GALLERY ⋆˚꩜｡</a></li>
-            <li><a href="#" target="_blank">⎚-⎚ STORIES</a></li>
-            <li><a href="#" target="_blank">[+..••] MINI-GAMES</a></li>
-            <li><a onclick="openPage('watchlist-page')">WATCHLIST ⭑.ᐟ</a></li>
+            <li><a href="TUO_LINK_BLOG" target="_blank">LOGS &amp; BLOG ✐ᝰ</a></li>
+            <li><a href="TUO_LINK_GALLERY" target="_blank">GALLERY ⋆˚꩜｡</a></li>
+            <li><a href="TUO_LINK_STORIES" target="_blank">⎚-⎚ STORIES</a></li>
+            <li><a href="TUO_LINK_GAMES" target="_blank">[+..••] MINI-GAMES</a></li>
+            <li><a href="TUO_LINK_WATCHLIST" target="_blank">WATCHLIST ⭑.ᐟ</a></li>
           </ul>
           <hr class="receipt-dash">
           <div class="receipt-barcode">𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃</div>
@@ -415,9 +362,9 @@
           </div>
         </div>
 
-        <button class="nav-box-btn-dark" onclick="openPage('buttons-page')" style="margin-bottom:0;">
+        <a href="TUO_LINK_WEBRINGS" target="_blank" class="nav-box-btn-dark" style="margin-bottom:0; text-decoration: none;">
           ★ WEBRINGS -&gt;
-        </button>
+        </a>
       </aside>
 
       <!-- CENTER COLUMN -->
@@ -441,10 +388,8 @@
 
         <div class="box" style="margin-bottom: 14px;">
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
-          <div class="box-body">
-            <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-              <li><strong>[AUG 24]</strong> Layout polished and translated to English! ✨</li>
-            </ul>
+          <div class="box-body" style="min-height: 40px;">
+            <!-- Spazio reso vuoto come richiesto -->
           </div>
         </div>
 
@@ -460,7 +405,6 @@
 
       <!-- RIGHT COLUMN -->
       <aside class="col-right">
-        <!-- Pezzo di carta posizionato tra il banner nero e l'orologio, largo quanto l'orologio -->
         <div class="paper-note-container">
           <img src="./1787672037979.png" alt="Note Paper" class="paper-note-img">
         </div>
@@ -469,8 +413,8 @@
           <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
         </div>
 
-        <!-- COLLEGAMENTO AL VERO GUESTBOOK DI ATABOOK -->
-        <a href="https://gura-code.atabook.org" target="_blank" class="nav-box-btn" style="display: block; text-decoration: none;">
+        <!-- COLLEGAMENTO AL GUESTBOOK AGGIORNATO -->
+        <a href="https://cosmic-s.atabook.org/" target="_blank" class="nav-box-btn" style="display: block; text-decoration: none;">
           ✎ SIGN GUESTBOOK -&gt;
         </a>
 
@@ -504,62 +448,7 @@
 
   </div>
 
-  <!-- FULLSCREEN PAGES -->
-  <div id="blog-page" class="fullscreen-page">
-    <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>BLOG</h2>
-    </div>
-    <div class="cards-grid-scroll">
-      <img src="./blog-banner1.png" alt="Blog Photo 1" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
-      <img src="./blog-banner2.png" alt="Blog Photo 2" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
-    </div>
-  </div>
-
-  <div id="gallery-page" class="fullscreen-page">
-    <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>GALLERY</h2>
-    </div>
-    <div class="cards-grid-scroll">
-      <img src="./art-card1.png" alt="Art 1" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
-      <img src="./art-card2.png" alt="Art 2" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
-    </div>
-  </div>
-
-  <div id="buttons-page" class="fullscreen-page">
-    <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>WEBRINGS</h2>
-    </div>
-    <div class="buttons-wall-grid">
-      <a href="#" target="_blank"><img src="./button1.png" alt="Webring Button" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';"></a>
-    </div>
-  </div>
-
-  <div id="watchlist-page" class="fullscreen-page">
-    <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>WATCHLIST</h2>
-    </div>
-    <div class="cards-grid-scroll">
-      <img src="./anime-pocket1.png" alt="Anime Card 1" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
-    </div>
-  </div>
-
   <script>
-    function openPage(pageId) {
-      document.getElementById('home-view').style.display = 'none';
-      document.querySelectorAll('.fullscreen-page').forEach(p => p.classList.remove('active'));
-      const target = document.getElementById(pageId);
-      if(target) target.classList.add('active');
-    }
-
-    function closePage() {
-      document.querySelectorAll('.fullscreen-page').forEach(p => p.classList.remove('active'));
-      document.getElementById('home-view').style.display = 'flex';
-    }
-
     let player;
     let isPlaying = false;
     const playPauseBtn = document.getElementById('play-pause-btn');
