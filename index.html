@@ -69,7 +69,7 @@
       grid-template-columns: minmax(180px, 240px) minmax(220px, 1fr) minmax(160px, 220px);
       gap: 12px;
       align-items: stretch;
-      padding-bottom: 20px;
+      padding-bottom: 10px;
       width: 100%;
     }
 
@@ -293,11 +293,9 @@
     .nav-box-btn-dark:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #333; }
     .nav-box-btn-dark:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #111; }
 
-    .site-footer { border-top: 2px solid #111; padding-top: 12px; text-align: center; font-weight: 700; font-size: 0.72rem; color: #555; }
-
     .pure-card-img {
       max-width: 100%;
-      width: auto;
+      width: 100%;
       height: auto;
       display: block;
       filter: drop-shadow(4px 4px 0px #111);
@@ -350,7 +348,6 @@
           </div>
         </div>
 
-        <!-- AGGIORNATO CON IL LINK DEL TUO SITO NEOCITIES -->
         <div class="box">
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center;">
@@ -372,35 +369,22 @@
 
       <!-- CENTER COLUMN -->
       <main class="col-center">
-        <div style="margin-bottom: 14px;">
+        <div style="margin-bottom: 14px; width: 100%;">
           <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
-        </div>
-
-        <a href="#" target="_blank" class="nav-box-btn-dark" style="background: #222; margin-bottom: 14px; padding: 14px;">
-          ☕︎ STUDY DIARY &amp; NOTES -&gt;
-        </a>
-
-        <div class="box-dark" style="margin-bottom: 14px;">
-          <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
-          <div class="box-body">
-            <p style="font-size:0.85rem; line-height:1.6; font-weight:600; color:#ddd;">
-              Welcome to my cozy corner on the web! Feel free to look around and sign the guestbook before you leave.
-            </p>
-          </div>
         </div>
 
         <div class="box" style="margin-bottom: 14px;">
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body" style="min-height: 40px;">
-            <!-- Spazio reso vuoto come richiesto -->
+            <!-- Spazio aggiornamenti -->
           </div>
         </div>
 
-        <div style="display: flex; gap: 10px; margin-bottom: 0;">
-          <a href="#" target="_blank" class="nav-box-btn-dark" style="margin-bottom:0;">
+        <div style="display: flex; gap: 8px; margin-bottom: 0; width: 100%;">
+          <a href="#" target="_blank" class="nav-box-btn-dark" style="margin-bottom:0; flex: 1;">
             PROJECT ONE -&gt;
           </a>
-          <a href="#" target="_blank" class="nav-box-btn" style="margin-bottom:0;">
+          <a href="#" target="_blank" class="nav-box-btn" style="margin-bottom:0; flex: 1;">
             PROJECT TWO -&gt;
           </a>
         </div>
@@ -443,10 +427,6 @@
       </aside>
 
     </div>
-
-    <footer class="site-footer">
-      COSMIC-S // HOSTED ON NEOCITIES // ALL RIGHTS RESERVED
-    </footer>
 
   </div>
 
