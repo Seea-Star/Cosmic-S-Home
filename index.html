@@ -339,7 +339,7 @@
           <hr class="receipt-dash">
           <ul class="receipt-menu-list">
             <li><a class="active">˙ᵕ˙ HOME</a></li>
-            <li><a href="TUO_LINK_BLOG" target="_blank">LOGS &amp; BLOG ✐ᝰ</a></li>
+            <li><a href="TUO_LINK_BLOG" target="_blank">BLOG ✐ᝰ</a></li>
             <li><a href="TUO_LINK_GALLERY" target="_blank">GALLERY ⋆˚꩜｡</a></li>
             <li><a href="TUO_LINK_STORIES" target="_blank">⎚-⎚ STORIES</a></li>
             <li><a href="TUO_LINK_GAMES" target="_blank">[+..••] MINI-GAMES</a></li>
@@ -552,6 +552,7 @@
             cell.innerText = '';
           } else if (date > daysInMonth) {
             cell.innerText = '';
+            date++;
           } else {
             cell.innerText = date;
             if (date === currentDay) {
