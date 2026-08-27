@@ -320,6 +320,28 @@
       transition: transform 0.15s ease;
     }
     .pure-card-img:hover { transform: translateY(-2px); }
+
+    /* --- CODICE RESPONSIVE PER SMARTPHONE --- */
+    @media screen and (max-width: 768px) {
+      body {
+        padding: 10px 5px;
+      }
+      .site-wrapper {
+        padding: 12px;
+        border-radius: 20px;
+        box-shadow: 4px 4px 0px #111111;
+      }
+      .top-banner h1 {
+        font-size: 2.2rem;
+      }
+      .grid-container {
+        grid-template-columns: 100%; /* Trasforma la griglia in un'unica colonna fluida */
+        gap: 14px;
+      }
+      .receipt-box {
+        transform: rotate(0deg); /* Rimuove la rotazione su mobile per evitare sbordamenti */
+      }
+    }
   </style>
 </head>
 <body>
@@ -569,3 +591,4 @@
 
 </body>
 </html>
+
