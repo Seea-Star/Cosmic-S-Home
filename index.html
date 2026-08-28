@@ -341,6 +341,10 @@
       .receipt-box {
         transform: rotate(0deg); /* Rimuove la rotazione su mobile per evitare sbordamenti */
       }
+      /* Aggiunge uno spazio sopra la luna solo su mobile per evitare che tocchi il box Welcome */
+      .col-center > div[style*="margin-top: auto;"] {
+        margin-top: 14px !important;
+      }
     }
   </style>
 </head>
