@@ -412,6 +412,12 @@
         </div>
 
         <div class="box" style="margin-bottom: 14px;">
+          <div class="box-header"><span>moon_phase</span><span>☽</span></div>
+          <div class="box-body" style="display: flex; justify-content: center; align-items: center; padding: 10px; overflow-x: auto;">
+            <table cellpadding="0" cellspacing="0" border="0" width="214"><tr><td align="center"><img src="https://www.moonmodule.com/cs/dm/s.gif" width="1" height="136" border="0" alt="" /></td><td background="https://www.moonmodule.com/cs/dm/hn.gif" valign="bottom" align="center"><a href="https://www.moonconnection.com" target="mc_moon_ph"><img src="https://www.moonmodule.com/cs/dm/s.gif" width="212" height="90" border="0" alt="" /></a><table cellpadding="0" cellspacing="0" border="0" width="204" height="20"><tr><td align="center" bgcolor="#000000"><a href="https://www.moonconnection.com/" target="mc_moon_ph"><font color="#7F7F7F" size="1" face="arial,helvetica,sans-serif"><span style="color:#7F7F7F;font-family:arial,helvetica,sans-serif;font-size:10px;">the moon</span></font></a></td></tr></table><img src="https://www.moonmodule.com/cs/dm/s.gif" width="1" height="4" border="0" alt="" /></td><td><img src="https://www.moonmodule.com/cs/dm/s.gif" width="1" height="136" border="0" alt="" /></td></tr></table></div>
+        </div>
+
+        <div class="box" style="margin-bottom: 14px;">
           <div class="box-body" style="font-size: 0.82rem; line-height: 1.5;">
             <p style="font-weight: 800; font-size: 1rem; margin-bottom: 8px;">Welcome to my site!<br>Hi, I’m Seea.</p>
             <p style="margin-bottom: 10px;">Thanks for stopping by. This site is still a work in progress, but I wanted to have a little space on the web to call my own.</p>
@@ -525,70 +531,4 @@
 
     function nextSong() {
       if (!player) return;
-      player.nextVideo();
-    }
-
-    function prevSong() {
-      if (!player) return;
-      player.previousVideo();
-    }
-
-    function generateCalendar() {
-      const today = new Date();
-      const currentDay = today.getDate();
-      const currentMonth = today.getMonth();
-      const currentYear = today.getFullYear();
-      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-      document.getElementById('cal-month-title').innerText = monthNames[currentMonth].toLowerCase();
-      document.getElementById('cal-day-number').innerText = currentDay;
-
-      const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
-      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-      const tbody = document.getElementById('calendar-body');
-      tbody.innerHTML = '';
-
-      let date = 1;
-      for (let i = 0; i < 6; i++) {
-        let row = document.createElement('tr');
-        let hasDate = false;
-
-        for (let j = 0; j < 7; j++) {
-          let cell = document.createElement('td');
-          if (i === 0 && j < firstDayOfMonth) {
-            cell.innerText = '';
-          } else if (date > daysInMonth) {
-            cell.innerText = '';
-            date++;
-          } else {
-            cell.innerText = date;
-            if (date === currentDay) {
-              cell.classList.add('today-dark');
-            }
-            date++;
-            hasDate = true;
-          }
-          row.appendChild(cell);
-        }
-        if (hasDate) {
-          tbody.appendChild(row);
-        }
-      }
-    }
-
-    function updatePixelClock() {
-      const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      document.getElementById('pixel-clock').innerText = `${hours}:${minutes}:${seconds}`;
-    }
-
-    generateCalendar();
-    setInterval(updatePixelClock, 1000);
-    updatePixelClock();
-  </script>
-
-</body>
-</html>
-
+      player
