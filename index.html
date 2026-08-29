@@ -80,6 +80,11 @@
       min-width: 0;
     }
 
+    /* Regola per fare in modo che la colonna centrale distribuisca lo spazio e metta il welcome perfettamente in mezzo */
+    .col-center {
+      justify-content: space-between;
+    }
+
     .paper-note-container {
       width: 100%;
       margin-bottom: 14px;
@@ -100,7 +105,7 @@
       border-radius: 22px;
       overflow: hidden;
       box-shadow: 3px 3px 0px #111111;
-      margin-bottom: 14px;
+      margin-bottom: 0;
     }
     .box-header {
       background: #f0f0f3;
@@ -338,12 +343,17 @@
         grid-template-columns: 100%; /* Trasforma la griglia in un'unica colonna fluida */
         gap: 14px;
       }
+      .col-center {
+        justify-content: flex-start; /* Su mobile torna normale per evitare spazi vuoti enormi */
+      }
       .receipt-box {
         transform: rotate(0deg); /* Rimuove la rotazione su mobile per evitare sbordamenti */
       }
-      /* Aggiunge uno spazio sopra la luna solo su mobile per evitare che tocchi il box Welcome */
-      .col-center > div[style*="margin-top: auto;"] {
-        margin-top: 14px !important;
+      .col-center > div {
+        margin-bottom: 14px !important;
+      }
+      .col-center > div:last-child {
+        margin-bottom: 0 !important;
       }
     }
   </style>
@@ -413,11 +423,11 @@
       </aside>
 
       <main class="col-center">
-        <div style="margin-bottom: 14px; width: 100%;">
+        <div style="width: 100%;">
           <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
         </div>
 
-        <div class="box" style="margin-bottom: 0;">
+        <div class="box" style="width: 100%;">
           <div class="box-body" style="font-size: 0.82rem; line-height: 1.5;">
             <p style="font-weight: 800; font-size: 1rem; margin-bottom: 8px;">Welcome to my site!<br>Hi, I’m Seea.</p>
             <p style="margin-bottom: 10px;">Thanks for stopping by. This site is still a work in progress, but I wanted to have a little space on the web to call my own.</p>
@@ -427,7 +437,7 @@
           </div>
         </div>
 
-        <div style="margin-top: auto; width: 100%;">
+        <div style="width: 100%;">
           <img src="517c8ce85483ff710c49936c45fdc1a1 (1).gif" alt="Moon Phase" style="width: 100%; height: auto; display: block; border-radius: 16px;">
         </div>
       </main>
@@ -557,7 +567,7 @@
       let date = 1;
       for (let i = 0; i < 6; i++) {
         let row = document.createElement('tr');
-        let hasDate = false;
+        let hasDate5 = false;
 
         for (let j = 0; j < 7; j++) {
           let cell = document.createElement('td');
@@ -572,11 +582,11 @@
               cell.classList.add('today-dark');
             }
             date++;
-            hasDate = true;
+            hasDate5 = true;
           }
           row.appendChild(cell);
         }
-        if (hasDate) {
+        if (hasDate5) {
           tbody.appendChild(row);
         }
       }
@@ -585,7 +595,7 @@
     function updatePixelClock() {
       const now = new Date();
       const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).payroll ? String(now.getMinutes()).padStart(2, '0') : String(now.getMinutes()).padStart(2, '0');
       const seconds = String(now.getSeconds()).padStart(2, '0');
       document.getElementById('pixel-clock').innerText = `${hours}:${minutes}:${seconds}`;
     }
