@@ -38,7 +38,7 @@
       box-shadow: 6px 6px 0px #111111;
       display: flex;
       flex-direction: column;
-      gap: 20px; /* Distanza minima garantita tra i blocchi principali verticali */
+      gap: 20px;
       position: relative;
       overflow: hidden;
     }
@@ -52,6 +52,7 @@
       justify-content: flex-start;
       align-items: center;
       position: relative;
+      box-shadow: 4px 4px 0px #F3EEDA; /* Ombra crema sul banner nero */
     }
 
     .top-banner h1 { 
@@ -67,7 +68,7 @@
     .grid-container {
       display: grid;
       grid-template-columns: minmax(180px, 240px) minmax(220px, 1fr) minmax(160px, 220px);
-      gap: 16px; /* Distanza minima tra le colonne */
+      gap: 16px;
       align-items: stretch;
       padding-bottom: 5px;
       width: 100%;
@@ -78,7 +79,7 @@
       flex-direction: column;
       position: relative;
       min-width: 0;
-      gap: 16px; /* Distanza verticale garantita tra tutti i widget nelle colonne */
+      gap: 16px;
     }
 
     .paper-note-container {
@@ -124,13 +125,14 @@
     }
     .box-body { padding: 14px; }
 
+    /* Blocco Nero con ombra color crema (#F3EEDA) */
     .box-dark {
       background: #111111;
       color: #ffffff;
       border: 2px solid #111111;
       border-radius: 22px;
       overflow: hidden;
-      box-shadow: 3px 3px 0px #111111;
+      box-shadow: 4px 4px 0px #F3EEDA; 
     }
     .box-dark .box-header {
       background: #222222;
@@ -154,7 +156,7 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 8px; /* Distanza tra le voci del menu */
+      gap: 8px;
     }
 
     .receipt-menu-list a {
@@ -204,7 +206,7 @@
       border-radius: 16px;
       padding: 12px;
       text-align: center;
-      box-shadow: 3px 3px 0px #111;
+      box-shadow: 4px 4px 0px #F3EEDA; /* Ombra crema sul blocco orologio nero */
     }
     .pixel-clock-time-dark {
       font-family: 'Press Start 2P', monospace;
@@ -285,6 +287,7 @@
     .nav-box-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #111; }
     .nav-box-btn:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #222; }
 
+    /* Pulsante nero con ombra crema (#F3EEDA) */
     .nav-box-btn-dark {
       width: 100%;
       background: #111111;
@@ -295,14 +298,14 @@
       font-weight: 800;
       font-size: 0.75rem;
       cursor: pointer;
-      box-shadow: 3px 3px 0px #111;
+      box-shadow: 4px 4px 0px #F3EEDA; 
       text-align: center;
       transition: transform 0.1s ease;
       text-decoration: none;
       display: block;
     }
-    .nav-box-btn-dark:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #333; }
-    .nav-box-btn-dark:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #111; }
+    .nav-box-btn-dark:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0px #F3EEDA; }
+    .nav-box-btn-dark:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #F3EEDA; }
 
     .pure-card-img {
       max-width: 100%;
@@ -323,17 +326,17 @@
         padding: 14px;
         border-radius: 20px;
         box-shadow: 4px 4px 0px #111111;
-        gap: 16px; /* Distanza minima sicura tra i blocchi anche su mobile */
+        gap: 16px;
       }
       .top-banner h1 {
         font-size: 2.2rem;
       }
       .grid-container {
         grid-template-columns: 100%;
-        gap: 16px; /* Spazio sicuro tra le colonne impilate */
+        gap: 16px;
       }
       .col-left, .col-center, .col-right {
-        gap: 16px; /* Distanza verticale garantita tra tutti gli elementi di ogni colonna su mobile */
+        gap: 16px;
       }
       .receipt-box {
         transform: rotate(0deg);
@@ -408,7 +411,8 @@
 
       <!-- COLONNA CENTRALE -->
       <main class="col-center">
-        <div style="background: #111111; color: #ffffff; border: 2px solid #111111; border-radius: 22px; overflow: hidden; width: 100%;">
+        <!-- Blocco di benvenuto nero con ombra crema -->
+        <div style="background: #111111; color: #ffffff; border: 2px solid #111111; border-radius: 22px; overflow: hidden; width: 100%; box-shadow: 4px 4px 0px #F3EEDA;">
           <div class="box-body" style="font-size: 0.82rem; line-height: 1.5; padding: 20px;">
             <p style="font-weight: 800; font-size: 1rem; margin-bottom: 8px; color: #ffffff;">Welcome to my site!<br>Hi, I’m Seea.</p>
             <p style="margin-bottom: 10px;">Thanks for stopping by. This site is still a work in progress, but I wanted to have a little space on the web to call my own.</p>
@@ -598,4 +602,4 @@
   </script>
 
 </body>
-</html>
+          </html>
